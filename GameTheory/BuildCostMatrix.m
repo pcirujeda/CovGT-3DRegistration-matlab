@@ -16,7 +16,7 @@ function C = BuildCostMatrix( keyPointsScene1, keyPointsScene2, correspondences 
     % Returns:
     %    C: (NxM) game cost matrix
     %
-    % Author : Pol Cirujeda / github.com/pcirujeda
+    % Author : Pol Cirujeda ( pol.cirujeda@upf.edu )
     % Thanks : Yashin Dicente Cid, Xavier Mateo
 
     % Copyright notice: You are free to modify, extend and distribute 
