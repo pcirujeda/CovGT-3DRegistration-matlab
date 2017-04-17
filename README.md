@@ -1,11 +1,16 @@
 # A 3D Scene Registration Method via Covariance Descriptors and an Evolutionary Stable Strategy Game Theory Solver
+![](registration.png)
 
 ## About
-This is a Matlab implementation of the method "A 3D Scene Registration Method via Covariance Descriptors and an Evolutionary Stable Strategy Game Theory Solver". It provides a 3D point cloud descriptor for the local definition of points, fusing shape and color information, based on the notion of covariance of features. The intrinsic properties of this descriptor are many: it is invariant to spatial rigid transformations, and robust to noise and resolution changes; it can also be used for characteristic point detection; and lies on top of a manifold topology which allows the use of analytical metric properties.
+This is a Matlab implementation of the method "A 3D Scene Registration Method via Covariance Descriptors and an Evolutionary Stable Strategy Game Theory Solver".
+
+It provides a 3D point cloud descriptor for the local definition of points, fusing shape and color information, based on the notion of covariance of features. The intrinsic properties of this descriptor are many: it is invariant to spatial rigid transformations, and robust to noise and resolution changes; it can also be used for characteristic point detection; and lies on top of a manifold topology which allows the use of analytical metric properties.
+
 The method is complemented with a Game Theory based approach for solving the matching correspondences under global geometric constraints. This offers a comprehensive understanding of the scene and avoids possible mismatches due to repeated areas or symmetries, which would be impossible to identify by the detector solely at a local level.
+
 The full registration approach is able to accurately match different views of a scene under spatial transformations, high noise levels and with small overlap between views.
 
-The method is described in detail in the following publications. Please cite them if you use it in you research and/or applications:
+The method is described in detail in the following publications [IJCV 2015](https://link.springer.com/article/10.1007/s11263-015-0820-2), [3DV 2014](http://ieeexplore.ieee.org/abstract/document/7035869/). Please cite them if you use it in you research and/or applications:
 
 ```bibtex
 @article{ IJCV2015,
@@ -41,8 +46,11 @@ A sample scene is included in the ```./Samples``` folder. Otherwise you can chec
 
 If verbose mode is enabled you will be able to see the different steps of the registration procedure, including scene analysis for keypoint extraction, Covariance Descriptor likelihood matching, Game Theory correspondences calculation and final registration estimation.
 
+![](registrationStages.png)
+
 ## Dependencies
 The code uses Andrea Tagliasacchi's [KDtree toolkit](https://github.com/ataiya/kdtree) for efficient search in 3D space.
+
 It is included in ```./KDTrees``` folder. Please use the included ```compileAll.m``` script for building the approppriate MEX files for your platform.
 
 ## License & Attribution
