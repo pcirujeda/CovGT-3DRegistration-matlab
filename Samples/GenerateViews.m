@@ -2,9 +2,9 @@
 % and store to OBJ files
 
 scene1 = OBJtoScene( 'Samples/Baboon_n001.obj' );
-[ scene1View1 ] = CutScene( scene2, 0.7, 0.05 );
+scene1View1 = CutScene( scene1, 0.5, 0.1 );
 SceneToOBJ( scene1View1, './Samples/Baboon_view1.obj' )
 
 scene2 = OBJtoScene( 'Samples/Baboon_n003.obj' );
-scene2View1 = CutScene( scene2, 0.35, 0.05 );
+scene2View1 = CutScene( scene2, 0.6, 0.05 );
 SceneToOBJ( scene2View1, './Samples/Baboon_view2.obj' )
