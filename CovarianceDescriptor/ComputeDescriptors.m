@@ -32,10 +32,10 @@ function descriptorSet = ComputeDescriptors( scene, keyPoints, covRadius, parame
 
     descriptorSet = zeros( 6, 6, numel( parameters.multiScaleRadius ), size( keyPoints, 1 ) );
     
-    kdTree = kdtree_build( sceneCoordinates );
+    kdTree = KDTreeSearcher( sceneCoordinates );
     for i = 1:size( keyPoints, 1 )
         for sc = 1:numel( parameters.multiScaleRadius )
-            vIdxs = kdtree_ball_query( kdTree, keyPoints(i,1:3), covRadius*parameters.multiScaleRadius(sc) );
+            vIdxs = cell2mat( rangesearch( kdTree, keyPoints(i,1:3), covRadius*parameters.multiScaleRadius(sc) ) );
         
             descriptorSet(:,:,sc,i) = CovarianceDescriptor( keyPoints(i,1:3), ...
                                                             sceneNormals(scene.feats.idx == keyPoints(i,4), :), ...
@@ -44,7 +44,6 @@ function descriptorSet = ComputeDescriptors( scene, keyPoints, covRadius, parame
                                                             sceneVertexColors(vIdxs, :) );
         end
     end
-    kdtree_delete( kdTree );
     
     if parameters.verbose
         totalTime = toc(initialTime);
