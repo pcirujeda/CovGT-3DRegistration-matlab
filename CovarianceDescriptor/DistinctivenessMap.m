@@ -31,9 +31,9 @@ function distinctivenessMap = DistinctivenessMap( keyPoints, coordinates, determ
     
     distinctivenessMap = zeros(1,size(keyPoints,1));
     
-    kdTree = kdtree_build( coordinates(:,1:3) );
+    kdTree = KDTreeSearcher( coordinates(:,1:3) );
     for idX=1:size( keyPoints, 1 )
-        neigh = kdtree_ball_query( kdTree, keyPoints(idX, 1:3), 5 );
+        neigh = cell2mat( rangesearch( kdTree, keyPoints(idX, 1:3), 5 ) );
         q = neigh(ismember(neigh, keyPoints(:,4)));
         
         detP = determinants( idX );
@@ -46,6 +46,5 @@ function distinctivenessMap = DistinctivenessMap( keyPoints, coordinates, determ
             distinctivenessMap( idX ) = norm(Ap)^(-k);
         end
     end    
-    kdtree_delete(kdTree);
 
 end

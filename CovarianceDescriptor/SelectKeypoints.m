@@ -36,10 +36,10 @@ function [ keyPoints, descriptorRadius ] = SelectKeypoints( scene, parameters )
     descriptorRadius = 0.05 * norm( range( sceneCoordinates ));
         
     % Compute scene descriptors
-    kdTree = kdtree_build( sceneCoordinates );
+    kdTree = KDTreeSearcher( sceneCoordinates );
     for p = 1:size( sceneCoordinates, 1 )
         
-        vIdxs = kdtree_ball_query( kdTree, sceneCoordinates(p, :), descriptorRadius);
+        vIdxs = cell2mat( rangesearch( kdTree, sceneCoordinates(p, :), descriptorRadius) );
         
         centerPoint = sceneCoordinates(p, :);
         centerNormal = sceneNormals(p, :);
@@ -50,7 +50,6 @@ function [ keyPoints, descriptorRadius ] = SelectKeypoints( scene, parameters )
         determinantValues(p) = det( sceneDescriptors(:,:,p));
         rankValues(p) = rank( sceneDescriptors(:,:,p));    
     end
-    kdtree_delete( kdTree );
     
     % Sample valid points in a voxel grid
     fullRankDeterminantValues = determinantValues( rankValues == 6 );

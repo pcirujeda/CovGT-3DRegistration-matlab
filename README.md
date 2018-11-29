@@ -48,10 +48,6 @@ If verbose mode is enabled you will be able to see the different steps of the re
 
 ![](registrationStages.png)
 
-## Dependencies
-The code uses Andrea Tagliasacchi's [KDtree toolkit](https://github.com/ataiya/kdtree) for efficient search in 3D space.
-
-It is included in ```./KDTrees``` folder. Please use the included ```compileAll.m``` script for building the approppriate MEX files for your platform.
 
 ## License & Attribution
 This software release is primarily [MIT](https://opensource.org/licenses/MIT) licensed. Some files contain third-party code under other licenses.

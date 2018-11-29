@@ -2,7 +2,6 @@ addpath( genpath('./CovarianceDescriptor') );
 addpath( genpath('./GameTheory') );
 addpath( genpath('./Common') );
 addpath( genpath('./IO') );
-addpath( genpath('./KDTrees') );
 addpath( genpath('./Visualization') );
 addpath( genpath('./Samples') );
 
